@@ -82,7 +82,7 @@ export function Contact() {
                       {t("contact.info.phone")}
                     </h4>
                     <a
-                      href="tel:+15555555555"
+                      href="tel:+97691621228"
                       className="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors"
                     >
                       +(976) 91621228
