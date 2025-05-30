@@ -108,40 +108,42 @@ export function Hero() {
   );
 }
 
-// TypeWriter component
+// 🟢 2 удаа бичээд зогсдог TypeWriter компонент
 function TypeWriter({ text, delay = 100 }: { text: string; delay?: number }) {
   const [displayText, setDisplayText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isTyping, setIsTyping] = useState(true);
+  const [loopCount, setLoopCount] = useState(0);
+  const maxLoops = 2;
 
   useEffect(() => {
-    if (currentIndex < text.length && isTyping) {
+    if (loopCount >= maxLoops) return;
+
+    if (currentIndex < text.length) {
       const timeout = setTimeout(() => {
         setDisplayText((prev) => prev + text[currentIndex]);
         setCurrentIndex((prev) => prev + 1);
       }, delay);
-
       return () => clearTimeout(timeout);
-    } else if (currentIndex >= text.length) {
-      setIsTyping(false);
-
-      // After some pause, start deleting
+    } else if (loopCount < maxLoops - 1) {
       const pauseTimeout = setTimeout(() => {
-        setIsTyping(true);
-        setCurrentIndex(0);
         setDisplayText("");
+        setCurrentIndex(0);
+        setLoopCount((prev) => prev + 1);
       }, 3000);
-
       return () => clearTimeout(pauseTimeout);
+    } else {
+      setLoopCount((prev) => prev + 1);
     }
-  }, [currentIndex, delay, isTyping, text]);
+  }, [currentIndex, text, delay, loopCount]);
 
   return (
     <span className="relative">
       <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
         {displayText}
       </span>
-      <span className="absolute -right-1 top-0 h-full w-0.5 bg-secondary animate-pulse"></span>
+      {loopCount < maxLoops && (
+        <span className="absolute -right-1 top-0 h-full w-0.5 bg-secondary animate-pulse"></span>
+      )}
     </span>
   );
 }
