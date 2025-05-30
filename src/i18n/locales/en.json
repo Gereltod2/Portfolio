@@ -1,0 +1,68 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Hello, I'm",
+    "role": "Gerelt-Od",
+    "description": "Building beautiful, functional, and user-friendly web applications with modern technologies and best practices.",
+    "contact": "Contact Me",
+    "resume": "Resume"
+  },
+  "about": {
+    "title": "About Me",
+    "subtitle": "My journey in tech and how I grew from a curious student into a full-stack developer",
+    "whoIAm": "Who I Am",
+    "bio": {
+      "part1": "I'm an aspiring Fullstack Developer from Erdenet city. After graduating high school in Erdenet, I continued my passion for technology by enrolling at Indra Cyber School.",
+      "part2": "At Indra, I gained hands-on experience in both frontend and backend development, as well as UI/UX design. I’ve worked with tools and technologies like React, Node.js, Tailwind CSS, MySQL, and more — building real-world projects that helped me understand how everything connects.",
+      "part3": "I love learning and growing every day. Whether it’s solving coding problems, exploring new frameworks, or improving user interfaces, I enjoy every part of the journey. My goal is to create software that is not only functional but also user-friendly and accessible."
+    },
+    "timeline": "Experience Timeline"
+  },
+  "skills": {
+    "title": "My Skills",
+    "subtitle": "Technologies and tools I work with to build modern web applications",
+    "otherSkills": "Other Skills & Interests"
+  },
+  "projects": {
+    "title": "My Projects",
+    "subtitle": "A selection of my recent work and personal projects",
+    "viewDemo": "Live Demo",
+    "viewCode": "View Code",
+    "features": "Key Features",
+    "technologies": "Technologies Used"
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "Have a project in mind or want to discuss opportunities? I'd love to hear from you!",
+    "info": {
+      "title": "Contact Information",
+      "email": "Email",
+      "phone": "Phone",
+      "location": "Location"
+    },
+    "availability": {
+      "title": "Availability",
+      "description": "I'm currently available for freelance work and full-time positions. If you're interested in working together, please reach out!",
+      "status": "Available for hire"
+    },
+    "form": {
+      "title": "Send a Message",
+      "name": "Name",
+      "email": "Email",
+      "subject": "Subject",
+      "message": "Message",
+      "send": "Send Message",
+      "success": "Thank you! Your message has been sent successfully.",
+      "error": "Oops! Something went wrong. Please try again later."
+    }
+  },
+  "footer": {
+    "copyright": "Made with love by Fullstack Developer"
+  }
+}
