@@ -75,7 +75,7 @@ export function Hero() {
                 <Linkedin size={24} />
               </a>
               <a
-                href="https://www.instagram.com/gereltod_28/"
+                href="https://www.instagram.com/gerlt_odd/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-full text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors"

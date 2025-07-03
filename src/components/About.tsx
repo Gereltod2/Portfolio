@@ -1,65 +1,55 @@
 import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import {
-  User,
-  Code,
-  Briefcase,
-  GraduationCap,
-} from "lucide-react";
+import { User, Code, Briefcase, GraduationCap, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
+
 const timeline = [
   {
     year: "2025 - Одоог хүртэл",
-    title: "AI суурьтай Fitness App хөгжүүлэлт",
-    company: "Багийн төсөл",
+    title: "МТ-ийн Паспорт шалгалт",
+    company: `ITPEC, ITpark Mongolia,
+МОНГОЛ УЛСЫН
+ЦАХИМ ХӨГЖИЛ, ИННОВАЦИ,
+ХАРИЛЦАА ХОЛБООНЫ ЯАМ`,
     description:
-      "AI ашиглан хүний биеийн онцлогт тохирсон хоол, дасгал, ус, нойрыг санал болгодог аппликейшн бүтээсэн. React Native, Tailwind, i18n ашигласан.",
+      "Мэдээллийн технологийн инженерийн шалгалт (МТИШ) нь 1969 оноос эхтэй Японы системд суурилсан, 12 оронд харилцан хүлээн зөвшөөрөгдсөн олон улсын шалгалт юм.",
     icon: <Briefcase className="h-6 w-6" />,
+    image: "/image.png",
   },
   {
     year: "2025",
-    title: "Frontend хөгжүүлэлт",
-    company: "HTML, CSS, React, Tailwind,  ...",
+    title: "Frontend Developer",
+    company: "Meta",
     description:
-      "Олон төрлийн вэбсайт бүтээж, орчин үеийн UI дизайн, хариу үйлдэлтэй хуудас зохион бүтээв. Tailwind CSS ашиглан хурдан хөгжүүлэлтийг хийсэн.",
+      "Олон төрлийн вэб сайт бүтээж, орчин үеийн UI/UX дизайн, mobile responsive шийдлүүдийг хэрэгжүүлсэн.",
     icon: <Code className="h-6 w-6" />,
+    link: "https://coursera.org/share/151bfdd99665c84d0e90d616a782440f",
   },
   {
     year: "2024-2025",
-    title: "Backend хөгжүүлэлт",
-    company: "Node.js, Prisma, MySQL, MongoDB, Next.js, ...",
+    title: "IBM Back-End Development Certificate",
+    company: "IBM",
     description:
-      "API server үүсгэж, хэрэглэгчийн нэвтрэлт, authentication, блог систем зэрэг backend шийдлүүдийг хөгжүүлсэн. Prisma ORM болон MySQL/MongoDB ашигласан.",
+      "Практик даалгавруудаар дамжуулан API сервер хөгжүүлэх, authentication шийдэл, хэрэглэгчийн систем болон блог платформ бүтээх чадвар эзэмшсэн.",
     icon: <Code className="h-6 w-6" />,
+    link: "https://coursera.org/share/0a162c9cc5285ee69da4a3e221be4b3e",
   },
   {
     year: "2024",
-    title: "JavaScript болон Python судалгаа",
-    company: "spoj, hackerrank, leetcode, ...",
+    title: "Google UX Design Certificate",
+    company: "Google",
     description:
-      "JavaScript болон Python хэл дээр олон бодлого бодож, жижиг тоглоомууд хийж туршсан. Тоглоомын логик, DOM interaction, canvas ашигласан.",
+      "UX дизайны үндсэн ойлголт, хэрэглэгчийн судалгаа, wireframe болон прототип бүтээх аргачлал судалсан.",
     icon: <GraduationCap className="h-6 w-6" />,
   },
 ];
-
 
 export function About() {
   const { t } = useTranslation();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, amount: 0.3 });
-  // const [image, setImage] = useState<string | null>(null);
   const [isHovered, setIsHovered] = useState(false);
-
-  // const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
-  //   const file = e.target.files?.[0];
-  //   if (file) {
-  //     const reader = new FileReader();
-  //     reader.onloadend = () => {
-  //       setImage(reader.result as string);
-  //     };
-  //     reader.readAsDataURL(file);
-  //   }
-  // };
+  const [modalImage, setModalImage] = useState<string | null>(null);
 
   return (
     <section
@@ -88,6 +78,7 @@ export function About() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          {/* Profile хэсэг */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
@@ -111,28 +102,8 @@ export function About() {
                 <img
                   src={"./hero.jpg"}
                   alt="Profile"
-                  className="w-full h-full object-cover "
+                  className="w-full h-full object-cover"
                 />
-
-                {/* <motion.div
-                  className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 transition-opacity"
-                  animate={{ opacity: isHovered ? 1 : 0 }}
-                >
-                  <label
-                    htmlFor="photo-upload"
-                    className="cursor-pointer flex items-center space-x-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-white hover:bg-white/30 transition-colors"
-                  >
-                    <Upload size={16} />
-                    <span>Change Photo</span>
-                  </label>
-                  <input
-                    type="file"
-                    id="photo-upload"
-                    accept="image/*"
-                    onChange={handleImageChange}
-                    className="hidden"
-                  />
-                </motion.div> */}
               </motion.div>
 
               <motion.div
@@ -146,36 +117,36 @@ export function About() {
             </div>
 
             <div className="space-y-4 text-slate-700 dark:text-slate-300">
-              <p>
-                {t("about.bio.part1")}
-              </p>
-              <p>
-                {t("about.bio.part2")}
-              </p>
-              <p>
-                {t("about.bio.part3")}
-              </p>
+              <p>{t("about.bio.part1")}</p>
+              <p>{t("about.bio.part2")}</p>
+              <p>{t("about.bio.part3")}</p>
             </div>
           </motion.div>
 
+          {/* Timeline хэсэг */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
             transition={{ duration: 0.6, delay: 0.5 }}
             className="relative pl-8 before:content-[''] before:absolute before:left-4 before:top-0 before:h-full before:w-px before:bg-muted"
           >
-            <h3 className="text-2xl font-bold mb-6">{t("about.timeline")}	</h3>
+            <h3 className="text-2xl font-bold mb-6">{t("about.timeline")}</h3>
 
             <div className="space-y-8">
               {timeline.map((item, index) => (
                 <motion.div
                   key={index}
-                  className="relative"
+                  className={`relative group ${
+                    item.link ? "cursor-pointer hover:opacity-80" : ""
+                  }`}
                   initial={{ opacity: 0, y: 20 }}
                   animate={
                     isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
                   }
                   transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
+                  onClick={() => {
+                    if (item.link) window.open(item.link, "_blank");
+                  }}
                 >
                   <div className="absolute -left-12 bg-white dark:bg-slate-800 rounded-full p-1.5 border-4 border-muted text-primary">
                     {item.icon}
@@ -191,12 +162,43 @@ export function About() {
                   <p className="mt-2 text-slate-700 dark:text-slate-300">
                     {item.description}
                   </p>
+
+                  {item.image && (
+                    <button
+                      className="mt-2 text-sm text-blue-500 hover:underline"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setModalImage(item.image);
+                      }}
+                    >
+                      Харах
+                    </button>
+                  )}
                 </motion.div>
               ))}
             </div>
           </motion.div>
         </div>
       </div>
+
+      {/* Modal зураг */}
+      {modalImage && (
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
+          <div className="relative">
+            <img
+              src={modalImage}
+              alt="Enlarged"
+              className="max-w-[90vw] max-h-[90vh] rounded-lg"
+            />
+            <button
+              className="absolute top-2 right-2 bg-white/80 p-1.5 rounded-full hover:bg-white"
+              onClick={() => setModalImage(null)}
+            >
+              <X className="h-5 w-5 text-black" />
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

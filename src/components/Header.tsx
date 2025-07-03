@@ -1,4 +1,4 @@
-  import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useTheme } from './ThemeProvider';
 import { Menu, X, Sun, Moon, Code } from 'lucide-react';
 import { LanguageSwitcher } from './LanguageSwitcher';
@@ -18,15 +18,17 @@ export function Header() {
   const { theme, toggleTheme } = useTheme();
   const { t } = useTranslation();
 
+  const linkClassNames =
+    "relative text-gray-700 dark:text-gray-300 font-medium transition-colors duration-300 ease-in-out " +
+    "hover:text-primary after:absolute after:left-0 after:-bottom-1 after:w-full after:h-[2px] after:bg-primary " +
+    "after:scale-x-0 hover:after:scale-x-100 after:origin-left after:transition-transform after:duration-300";
+
+  const buttonClassNames = "p-2 rounded-md hover:bg-muted/20 transition-colors duration-300";
+
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 10);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -53,20 +55,12 @@ export function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="text-sm font-medium hover:text-primary transition-colors"
-              >
+              <a key={link.name} href={link.href} className={linkClassNames}>
                 {t(`nav.${link.name.toLowerCase()}`)}
               </a>
             ))}
             <LanguageSwitcher />
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-full hover:bg-muted/20 transition-colors"
-              aria-label="Toggle theme"
-            >
+            <button onClick={toggleTheme} className={buttonClassNames} aria-label="Toggle theme">
               {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
             </button>
           </nav>
@@ -74,16 +68,12 @@ export function Header() {
           {/* Mobile Menu Button */}
           <div className="flex items-center md:hidden space-x-4">
             <LanguageSwitcher />
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-full hover:bg-muted/20 transition-colors"
-              aria-label="Toggle theme"
-            >
+            <button onClick={toggleTheme} className={buttonClassNames} aria-label="Toggle theme">
               {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
             </button>
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 rounded-md hover:bg-muted/20 transition-colors"
+              className={buttonClassNames}
               aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -101,7 +91,7 @@ export function Header() {
                 <a
                   key={link.name}
                   href={link.href}
-                  className="py-2 text-base font-medium hover:text-primary transition-colors"
+                  className="py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition-colors duration-300 relative after:absolute after:left-0 after:-bottom-1 after:w-full after:h-[2px] after:bg-primary after:scale-x-0 hover:after:scale-x-100 after:origin-left after:transition-transform after:duration-300"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {t(`nav.${link.name.toLowerCase()}`)}

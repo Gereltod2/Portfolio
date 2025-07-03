@@ -2,10 +2,19 @@ import { Code, Heart } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { ThemeProvider } from './ThemeProvider';
 
-
 export function Footer() {
   const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
+
+  // Холбоосуудын гоё hover эффекттэй class
+  const linkClassNames =
+    "relative text-gray-300 hover:text-primary transition-colors duration-300 ease-in-out " +
+    "after:absolute after:left-0 after:-bottom-1 after:w-full after:h-0.5 after:bg-primary " +
+    "after:scale-x-0 hover:after:scale-x-100 after:origin-left after:transition-transform after:duration-300";
+
+  // Нийгмийн сүлжээний icons-ийн гоё hover эффекттэй class
+  const iconClassNames =
+    "p-2 rounded-full hover:bg-primary hover:text-white transition-colors duration-300 shadow-md hover:shadow-lg";
 
   return (
     <ThemeProvider>
@@ -17,22 +26,19 @@ export function Footer() {
           </div>
 
           <div className="flex space-x-8 mb-6 md:mb-0">
-            <a href="#home" className="hover:text-primary transition-colors">
+            <a href="#home" className={linkClassNames}>
               {t("nav.home")}
             </a>
-            <a href="#about" className="hover:text-primary transition-colors">
+            <a href="#about" className={linkClassNames}>
               {t("nav.about")}
             </a>
-            <a href="#skills" className="hover:text-primary transition-colors">
+            <a href="#skills" className={linkClassNames}>
               {t("nav.skills")}
             </a>
-            <a
-              href="#projects"
-              className="hover:text-primary transition-colors"
-            >
+            <a href="#projects" className={linkClassNames}>
               {t("nav.projects")}
             </a>
-            <a href="#contact" className="hover:text-primary transition-colors">
+            <a href="#contact" className={linkClassNames}>
               {t("nav.contact")}
             </a>
           </div>
@@ -42,11 +48,11 @@ export function Footer() {
               href="https://github.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-full hover:bg-slate-800 transition-colors"
+              className={iconClassNames}
               aria-label="GitHub"
             >
               <svg
-                xmlns="https://github.com/Gereltod2"
+                xmlns="http://www.w3.org/2000/svg"
                 width="20"
                 height="20"
                 viewBox="0 0 24 24"
@@ -65,7 +71,7 @@ export function Footer() {
               href="https://www.linkedin.com/in/odonbaatar-gerelt-od-314298358/"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-full hover:bg-slate-800 transition-colors"
+              className={iconClassNames}
               aria-label="LinkedIn"
             >
               <svg
@@ -86,10 +92,10 @@ export function Footer() {
               </svg>
             </a>
             <a
-              href="https://www.instagram.com/gereltod_28/"
+              href="https://www.instagram.com/gerlt_odd/"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-full hover:bg-slate-800 transition-colors"
+              className={iconClassNames}
               aria-label="Instagram"
             >
               <svg
