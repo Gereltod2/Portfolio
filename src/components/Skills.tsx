@@ -26,14 +26,10 @@ const skillCategories = [
     ],
   },
   {
-    name: 'DevOps & Tools',
+    name: '...',
     skills: [
       { name: 'Git', level: 85 },
-      { name: 'Docker', level: 70 },
-      { name: 'AWS', level: 65 },
-      { name: 'CI/CD', level: 75 },
-      { name: 'Jest', level: 80 },
-      { name: 'Webpack', level: 70 },
+      { name: 'REST API', level: 80 },
     ],
   },
 ];
@@ -45,7 +41,7 @@ export function Skills() {
 
   return (
     <section id="skills" ref={ref} className="section">
-      <div className="container">
+      <div className="container justify-center">
         <div className="text-center mb-16">
           <motion.h2 
             className="section-title"
