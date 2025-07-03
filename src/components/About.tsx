@@ -100,7 +100,7 @@ export function About() {
                 transition={{ duration: 0.3 }}
               >
                 <img
-                  src={"./hero.jpg"}
+                  src={"./a.jpg"}
                   alt="Profile"
                   className="w-full h-full object-cover"
                 />
